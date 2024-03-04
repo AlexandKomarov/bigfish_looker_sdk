@@ -16,9 +16,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install looker_sdk
-      - name: Run script
+      - name: Run script and save results
         run: python big_fish_looker_sdk.py
         env:
           LOOKERSDK_BASE_URL: ${{ secrets.BASE_URL }}
           LOOKERSDK_CLIENT_ID: ${{ secrets.CLIENT_ID }}
           LOOKERSDK_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      - name: Commit and push if changes
+        run: |
+          git config --global user.email "Alex.Komarov-ext@bigfishgames.com"
+          git config --global user.name "GitHub Actions"
+          git add results.txt
+          git diff --staged --quiet || git commit -m "Update results"
+          git push

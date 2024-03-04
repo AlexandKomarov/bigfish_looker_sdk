@@ -1,4 +1,6 @@
 import looker_sdk
+import json
+from datetime import datetime
 
 sdk = looker_sdk.init40()
 
@@ -36,5 +38,13 @@ def single_look_check(id, result_dict: dict):
         result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/look/{id}")
 
 single_dashboard_check('2180', result_dict)
-single_look_check('2285', result_dict)
-print(result_dict)
+single_look_check('2539', result_dict)
+
+now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+file_path = 'results.txt'
+
+with open(file_path, 'a') as file:
+    file.write(f"Results at {now}:\n")
+    file.write(json.dumps(result_dict, indent=4))
+    file.write("\n\n")
