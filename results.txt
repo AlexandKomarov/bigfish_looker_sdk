@@ -1,0 +1,9 @@
+Results at 2024-03-04 23:24:23:
+{
+    "good": [
+        "https://bigfishgames.gw1.cloud.looker.com/dashboards/2180",
+        "https://bigfishgames.gw1.cloud.looker.com/looks/2539"
+    ],
+    "bad": []
+}
+
