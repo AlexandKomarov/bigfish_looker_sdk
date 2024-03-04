@@ -1,1 +1,24 @@
-
+name: Run Looker Script
+on:
+  schedule:
+    - cron: '0 15 * * *' # Run every day at 15:00 UTC
+  workflow_dispatch:
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install looker_sdk smtplib email
+      - name: Run script
+        run: python big_fish_looker_sdk_.py
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
