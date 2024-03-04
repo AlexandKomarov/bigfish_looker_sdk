@@ -28,6 +28,4 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add results.txt
           git diff --staged --quiet || git commit -m "Update results"
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/AlexandKomarov/bigfish_looker_sdk.git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/AlexandKomarov/bigfish_looker_sdk.git
