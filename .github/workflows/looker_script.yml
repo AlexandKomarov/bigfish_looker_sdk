@@ -15,10 +15,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install looker_sdk smtplib email
+          pip install looker_sdk
       - name: Run script
-        run: python big_fish_looker_sdk_.py
+        run: python big_fish_looker_sdk.py
         env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          LOOKERSDK_BASE_URL: ${{ secrets.BASE_URL }}
+          LOOKERSDK_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          LOOKERSDK_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
