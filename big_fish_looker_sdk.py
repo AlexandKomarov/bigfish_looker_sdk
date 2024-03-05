@@ -88,9 +88,9 @@ now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 file_path_readme = 'README.md'
 new_content = f"# Last results at {now}:\n\n"
 for link in result_dict['good']:
-    new_content += f'- [{link[:-2]}]({link})\n'
+    new_content += f'- [{link}]({link[:-2]})\n'
 for link in result_dict['bad']:
-    new_content += f'- [{link[:-2]}]({link})\n'
+    new_content += f'- [{link}]({link[:-2]})\n'
 
 with open(file_path_readme, 'w') as file:
     file.write(new_content + '\n')
