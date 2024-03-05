@@ -36,3 +36,9 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Уведомление: Workflow завершен. Проверьте результаты."}' $SLACK_WEBHOOK_URL
