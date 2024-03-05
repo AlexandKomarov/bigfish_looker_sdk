@@ -14,12 +14,12 @@ def single_dashboard_check(id: str, result_dict: dict):
             if query and query.id:
                 query_response = sdk.run_query(query_id=query.id, result_format='json')
                 if any(word in query_response for word in error_words):
-                    result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id}❌")
+                    result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌")
                     break
         else:
-            result_dict['good'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id}✅")
+            result_dict['good'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅")
     except:
-        result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id}❌")
+        result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌")
 
 
 def single_look_check(id, result_dict: dict):
