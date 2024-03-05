@@ -66,7 +66,7 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
 folders_dict = {'Executive KPIs': '1121',
                 'Cohort LTV KPIs': '333',
                 'Ad Monetization': '400',
-                'All Games': '399',
+                # 'All Games': '399',
                 'Blast Explorers': '889',
                 'Cooking Craze': '59',
                 'Evermerge': '870',
