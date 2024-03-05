@@ -3,8 +3,6 @@ from datetime import datetime
 
 sdk = looker_sdk.init40()
 
-result_dict = {'good': [], 'bad': []}
-
 def single_dashboard_check(id: str, result_dict: dict):
     try:
         board = sdk.dashboard(dashboard_id=id)
@@ -81,16 +79,26 @@ folders_dict = {'Executive KPIs': '1121',
                 'Travel Crush': '1074',
                 'Ultimate Survivors': '1043'}
 
-check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
+# check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 file_path_readme = 'README.md'
-new_content = f"# Last results at {now}:\n\n"
-for link in result_dict['good']:
-    new_content += f'- [{link}]({link[:-2]})\n'
-for link in result_dict['bad']:
-    new_content += f'- [{link}]({link[:-2]})\n'
+
+result_txt_dict = {}
+
+new_content = f"# Last results at {now}:\n"
+for folder in folders_dict:
+    result_dict = {'good': [], 'bad': []}
+    result_txt_dict[folder] = []
+    new_content += f'\n### {folder}: \n'
+    check_all_dashboards_and_looks_in_folder(folders_dict[folder], result_dict)
+    if not result_dict['bad']:
+        new_content += '- All is GOOD!\n'
+    else:
+        for link in result_dict['bad']:
+            new_content += f'- [{link}]({link[:-2]})\n'
+            result_txt_dict[folder].append(link)
 
 with open(file_path_readme, 'w') as file:
     file.write(new_content + '\n')
@@ -99,8 +107,11 @@ file_path = 'result.txt'
 
 with open(file_path, 'w') as file:
     file.write(f"# Results at {now}:\n\n")
-    for link in result_dict['good']:
-        file.write(link + '\n')
-    for link in result_dict['bad']:
-        file.write(link + '\n')
+    for folder in result_txt_dict:
+        file.write('- ' + folder + '\n')
+        if not result_txt_dict[folder]:
+            file.write('All is GOOD!\n')
+        else:
+            for link in result_txt_dict[folder]:
+                file.write(link + '\n')
 
