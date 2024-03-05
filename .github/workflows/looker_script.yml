@@ -37,8 +37,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Notify Slack
+      - name: Read README.md content
+        id: readme_content
+        run: echo "::set-output name=content::$(cat README.md | sed 's/$/\\n/g' | tr -d '\n')"
+
+      - name: Notify Slack with README.md content
         env:
-          SLACK_WEBHOOK_URL_ALEX: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Уведомление: Workflow завершен. Проверьте результаты."}' $SLACK_WEBHOOK_URL_ALEX
+          README_CONTENT="${{ steps.readme_content.outputs.content }}"
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Notification: Workflow is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
