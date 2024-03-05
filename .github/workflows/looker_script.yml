@@ -1,7 +1,7 @@
 name: Run Looker Script
 on:
   schedule:
-    - cron: '35 18 * * *'  # Daily run at 15:00 UTC
+    - cron: '42 17 * * *'  # Daily run at 15:00 UTC
   workflow_dispatch:
 
 jobs:
