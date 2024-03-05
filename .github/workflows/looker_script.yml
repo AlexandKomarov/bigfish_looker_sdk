@@ -37,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read README.md content
+      - name: Read result.txt content
         id: readme_content
         run: echo "::set-output name=content::$(cat result.txt | sed 's/$/\\n/g' | tr -d '\n')"
 
@@ -46,4 +46,4 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Notification: Workflow is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow for Puzzle and Passport is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL

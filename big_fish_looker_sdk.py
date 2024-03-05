@@ -1,5 +1,4 @@
 import looker_sdk
-import json
 from datetime import datetime
 
 sdk = looker_sdk.init40()
@@ -37,29 +36,64 @@ def single_look_check(id, result_dict: dict):
     except:
         result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/look/{id}❌")
 
-single_dashboard_check('2180', result_dict)
-single_look_check('2539', result_dict)
+# single_dashboard_check('2180', result_dict)
+# single_look_check('2539', result_dict)
+
+def get_dashboards_in_folder(folder_id, dict_of_ids):
+    dashboards = sdk.folder_dashboards(folder_id)
+    for dashboard in dashboards:
+        dict_of_ids['dashboards'].append(dashboard.id)
+
+    looks = sdk.folder_looks(folder_id)
+    for look in looks:
+        dict_of_ids['looks'].append(look.id)
+
+    subfolders = sdk.folder_children(folder_id)
+    for folder in subfolders:
+        if 'archive' not in folder.name.lower():
+            get_dashboards_in_folder(folder.id, dict_of_ids)
+
+def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
+
+    dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
+    get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
+
+    for id in dict_of_dashboards_and_looks['dashboards']:
+        single_dashboard_check(id, result_dict)
+
+    for id in dict_of_dashboards_and_looks['looks']:
+        single_look_check(id, result_dict)
+
+
+folders_dict = {'Executive KPIs': '1121',
+                'Cohort LTV KPIs': '333',
+                'Ad Monetization': '400',
+                'All Games': '399',
+                'Blast Explorers': '889',
+                'Cooking Craze': '59',
+                'Evermerge': '870',
+                'Fairway': '1128',
+                'Fashion Crafters': '763',
+                'Gummy Drop!': '58',
+                'Match Upon a Time': '1035',
+                'Puzzles and Passports': '1161',
+                'Towers & Titans': '844',
+                'Travel Crush': '1074',
+                'Ultimate Survivors': '1043'}
+
+check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-# new_content = f"# Results at {now}:\n\n"
-# new_content += '## Good\n'
-# for link in result_dict['good']:
-#     new_content += f'- [{link}]({link}) ✅\n'
-# new_content += '\n## Bad\n'
-# for link in result_dict['bad']:
-#     new_content += f'- [{link}]({link}) ❌\n'
-#
-# file_path = 'README.md'
-#
-# try:
-#     with open(file_path, 'r') as file:
-#         old_content = file.read()
-# except FileNotFoundError:
-#     old_content = ''
-#
-# with open(file_path, 'w') as file:
-#     file.write(new_content + '\n' + old_content)
+file_path_readme = 'README.md'
+new_content = f"# Last results at {now}:\n\n"
+for link in result_dict['good']:
+    new_content += f'- [{link}]({link}) ✅\n'
+for link in result_dict['bad']:
+    new_content += f'- [{link}]({link}) ❌\n'
+
+with open(file_path_readme, 'w') as file:
+    file.write(new_content + '\n')
 
 file_path = 'result.txt'
 
