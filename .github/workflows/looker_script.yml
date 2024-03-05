@@ -27,12 +27,6 @@ jobs:
           LOOKERSDK_CLIENT_ID: ${{ secrets.CLIENT_ID }}
           LOOKERSDK_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
 
-      - name: Upload results as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Results
-          path: README.md
-
       - name: Commit and push if changes
         run: |
           git config --global user.email "Alex.Komarov-ext@bigfishgames.com"
