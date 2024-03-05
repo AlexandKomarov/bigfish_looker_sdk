@@ -42,9 +42,13 @@ single_look_check('2539', result_dict)
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-file_path = 'results.txt'
+file_path = 'results.md'
 
 with open(file_path, 'a') as file:
-    file.write(f"Results at {now}:\n")
-    file.write(json.dumps(result_dict, indent=4))
-    file.write("\n\n")
+    file.write(f"# Results at {now}:\n\n")
+    file.write('## Good\n')
+    for link in result_dict['good']:
+        file.write(f'- [{link}]({link})\n')
+    file.write('\n## Bad\n')
+    for link in result_dict['bad']:
+        file.write(f'- [{link}]({link})\n')
