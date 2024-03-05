@@ -30,14 +30,14 @@ def single_look_check(id, result_dict: dict):
         if query and query.id:
             query_response = sdk.run_query(query_id=query.id, result_format='json')
             if any(word in query_response for word in error_words):
-                result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/looks/{id}❌")
+                result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ❌")
             else:
-                result_dict['good'].append(f"https://bigfishgames.gw1.cloud.looker.com/looks/{id}✅")
+                result_dict['good'].append(f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ✅")
     except:
-        result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/look/{id}❌")
+        result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/look/{id} ❌")
 
 # single_dashboard_check('2180', result_dict)
-# single_look_check('2539', result_dict)
+single_look_check('2539', result_dict)
 
 def get_dashboards_in_folder(folder_id, dict_of_ids):
     dashboards = sdk.folder_dashboards(folder_id)
@@ -81,16 +81,16 @@ folders_dict = {'Executive KPIs': '1121',
                 'Travel Crush': '1074',
                 'Ultimate Survivors': '1043'}
 
-check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
+# check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 file_path_readme = 'README.md'
 new_content = f"# Last results at {now}:\n\n"
 for link in result_dict['good']:
-    new_content += f'- [{link}]({link}) ✅\n'
+    new_content += f'- [{link}]({link})\n'
 for link in result_dict['bad']:
-    new_content += f'- [{link}]({link}) ❌\n'
+    new_content += f'- [{link}]({link})\n'
 
 with open(file_path_readme, 'w') as file:
     file.write(new_content + '\n')

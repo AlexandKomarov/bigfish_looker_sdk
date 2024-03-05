@@ -20,7 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install looker_sdk
 
-      - name: Run script and save results in Markdown
+      - name: Run script and save results in Markdown and txt
         run: python big_fish_looker_sdk.py
         env:
           LOOKERSDK_BASE_URL: ${{ secrets.BASE_URL }}
@@ -43,7 +43,7 @@ jobs:
 
       - name: Notify Slack with result.txt content
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_LOOKER_ENG }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
           curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow for Puzzle and Passport is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
