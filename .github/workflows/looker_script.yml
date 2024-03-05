@@ -31,7 +31,7 @@ jobs:
         run: |
           git config --global user.email "Alex.Komarov-ext@bigfishgames.com"
           git config --global user.name "GitHub Actions"
-          git add README.md  
+          git add result.txt  
           git commit -m "Update results" -a || echo "No changes to commit"
           git push
         env:
@@ -39,9 +39,9 @@ jobs:
 
       - name: Read README.md content
         id: readme_content
-        run: echo "::set-output name=content::$(cat README.md | sed 's/$/\\n/g' | tr -d '\n')"
+        run: echo "::set-output name=content::$(cat result.txt | sed 's/$/\\n/g' | tr -d '\n')"
 
-      - name: Notify Slack with README.md content
+      - name: Notify Slack with result.txt content
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
