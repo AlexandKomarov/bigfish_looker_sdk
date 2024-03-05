@@ -42,7 +42,7 @@ single_look_check('2539', result_dict)
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-file_path = 'results.md'
+file_path = 'README.md'
 
 with open(file_path, 'a') as file:
     file.write(f"# Results at {now}:\n\n")

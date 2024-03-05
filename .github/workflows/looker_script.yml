@@ -31,13 +31,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Results
-          path: results.md
+          path: README.md
 
       - name: Commit and push if changes
         run: |
           git config --global user.email "Alex.Komarov-ext@bigfishgames.com"
           git config --global user.name "GitHub Actions"
-          git add results.md  
+          git add README.md  
           git commit -m "Update results" -a || echo "No changes to commit"
           git push
         env:
