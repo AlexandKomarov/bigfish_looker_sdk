@@ -42,13 +42,21 @@ single_look_check('2539', result_dict)
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+new_content = f"# Results at {now}:\n\n"
+new_content += '## Good\n'
+for link in result_dict['good']:
+    new_content += f'- [{link}]({link}) ✅\n'
+new_content += '\n## Bad\n'
+for link in result_dict['bad']:
+    new_content += f'- [{link}]({link}) ❌\n'
+
 file_path = 'README.md'
 
-with open(file_path, 'a') as file:
-    file.write(f"# Results at {now}:\n\n")
-    file.write('## Good\n')
-    for link in result_dict['good']:
-        file.write(f'- [{link}]({link})\n')
-    file.write('\n## Bad\n')
-    for link in result_dict['bad']:
-        file.write(f'- [{link}]({link})\n')
+try:
+    with open(file_path, 'r') as file:
+        old_content = file.read()
+except FileNotFoundError:
+    old_content = ''
+
+with open(file_path, 'w') as file:
+    file.write(new_content + '\n' + old_content)
