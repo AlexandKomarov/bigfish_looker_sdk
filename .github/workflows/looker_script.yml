@@ -39,6 +39,6 @@ jobs:
 
       - name: Notify Slack
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
+          SLACK_WEBHOOK_URL_ALEX: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Уведомление: Workflow завершен. Проверьте результаты."}' $SLACK_WEBHOOK_URL_ALEX
