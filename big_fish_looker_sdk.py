@@ -63,21 +63,23 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
         single_look_check(id, result_dict)
 
 
-folders_dict = {'Executive KPIs': '1121',
+folders_dict = {
+                'Executive KPIs': '1121',
                 'Cohort LTV KPIs': '333',
                 'Ad Monetization': '400',
                 # 'All Games': '399',
                 # 'Blast Explorers': '889',
-                'Cooking Craze': '59',
-                'Evermerge': '870',
-                'Fairway': '1128',
+                # 'Cooking Craze': '59',
+                # 'Evermerge': '870',
+                # 'Fairway': '1128',
                 # 'Fashion Crafters': '763',
-                'Gummy Drop!': '58',
+                # 'Gummy Drop!': '58',
                 # 'Match Upon a Time': '1035',
                 'Puzzles and Passports': '1161',
                 # 'Towers & Titans': '844',
                 # 'Travel Crush': '1074',
-                'Ultimate Survivors': '1043'}
+                # 'Ultimate Survivors': '1043'
+                }
 
 # check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
 
