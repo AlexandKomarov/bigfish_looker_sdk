@@ -64,9 +64,9 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
 
 
 folders_dict = {
-                'Executive KPIs': '1121',
-                'Cohort LTV KPIs': '333',
-                'Ad Monetization': '400',
+                # 'Executive KPIs': '1121',
+                # 'Cohort LTV KPIs': '333',
+                # 'Ad Monetization': '400',
                 # 'All Games': '399',
                 # 'Blast Explorers': '889',
                 # 'Cooking Craze': '59',
@@ -102,12 +102,12 @@ for folder in folders_dict:
             new_content += f'- [{link}]({link[:-2]})\n'
             result_txt_dict[folder].append(link)
 
-with open(file_path_readme, 'w') as file:
+with open(file_path_readme, 'w', encoding='utf-8') as file:
     file.write(new_content + '\n')
 
 file_path = 'result.txt'
 
-with open(file_path, 'w') as file:
+with open(file_path, 'w', encoding='utf-8') as file:
     file.write(f"# Results at {now}:\n\n")
     for folder in result_txt_dict:
         file.write('- ' + folder + '\n')
