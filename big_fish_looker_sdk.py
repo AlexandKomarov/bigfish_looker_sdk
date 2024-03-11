@@ -1,8 +1,11 @@
 import looker_sdk
 from datetime import datetime
 
+# Creating the looker SDK object to make a connection to Looker API
 sdk = looker_sdk.init40()
 
+
+# Function for checking the response from the database by keywords in single dashboard
 def single_dashboard_check(id: str, result_dict: dict):
     try:
         board = sdk.dashboard(dashboard_id=id)
@@ -20,6 +23,7 @@ def single_dashboard_check(id: str, result_dict: dict):
         result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌")
 
 
+# Function for checking the response from the database by keywords in single look
 def single_look_check(id, result_dict: dict):
     try:
         look = sdk.look(look_id=id)
@@ -34,9 +38,8 @@ def single_look_check(id, result_dict: dict):
     except:
         result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/look/{id} ❌")
 
-# single_dashboard_check('2180', result_dict)
-# single_look_check('2539', result_dict)
 
+# Function to retrieve all dashboards and looks in a folder using recursion
 def get_dashboards_in_folder(folder_id, dict_of_ids):
     dashboards = sdk.folder_dashboards(folder_id)
     for dashboard in dashboards:
@@ -51,8 +54,9 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
         if 'archive' not in folder.name.lower():
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
-def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
 
+# Function for enumerating all dashboards and looks in a folder and checking them out
+def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
     dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
     get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
 
@@ -63,33 +67,33 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
         single_look_check(id, result_dict)
 
 
+# Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
 folders_dict = {
-                # 'Executive KPIs': '1121',
-                # 'Cohort LTV KPIs': '333',
-                # 'Ad Monetization': '400',
-                # 'All Games': '399',
-                # 'Blast Explorers': '889',
-                # 'Cooking Craze': '59',
-                # 'Evermerge': '870',
-                # 'Fairway': '1128',
-                # 'Fashion Crafters': '763',
-                # 'Gummy Drop!': '58',
-                # 'Match Upon a Time': '1035',
-                'Puzzles and Passports': '1161',
-                # 'Towers & Titans': '844',
-                # 'Travel Crush': '1074',
-                # 'Ultimate Survivors': '1043'
-                }
+    # 'Executive KPIs': '1121',
+    # 'Cohort LTV KPIs': '333',
+    # 'Ad Monetization': '400',
+    # 'All Games': '399',
+    # 'Blast Explorers': '889',
+    # 'Cooking Craze': '59',
+    # 'Evermerge': '870',
+    # 'Fairway': '1128',
+    # 'Fashion Crafters': '763',
+    # 'Gummy Drop!': '58',
+    # 'Match Upon a Time': '1035',
+    'Puzzles and Passports': '1161',
+    # 'Towers & Titans': '844',
+    # 'Travel Crush': '1074',
+    # 'Ultimate Survivors': '1043'
+}
 
-# check_all_dashboards_and_looks_in_folder(folders_dict['Puzzles and Passports'], result_dict)
+now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time selection
 
-now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+file_path_readme = 'README.md'  # Path to README file
 
-file_path_readme = 'README.md'
+result_txt_dict = {}  # Variable for Slack message
 
-result_txt_dict = {}
-
-new_content = f"# Last results at {now}:\n"
+# Population the README file
+new_content = f"# Last results at {now} UTC:\n"
 for folder in folders_dict:
     result_dict = {'good': [], 'bad': []}
     result_txt_dict[folder] = []
@@ -107,6 +111,7 @@ with open(file_path_readme, 'w', encoding='utf-8') as file:
 
 file_path = 'result.txt'
 
+# Population the result.txt file to send it into Slack
 with open(file_path, 'w', encoding='utf-8') as file:
     file.write(f"# Results at {now}:\n\n")
     for folder in result_txt_dict:
@@ -116,4 +121,3 @@ with open(file_path, 'w', encoding='utf-8') as file:
         else:
             for link in result_txt_dict[folder]:
                 file.write(link + '\n')
-
