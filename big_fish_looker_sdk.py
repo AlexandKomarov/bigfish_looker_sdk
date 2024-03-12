@@ -69,21 +69,21 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
 
 # Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
 folders_dict = {
-    # 'Executive KPIs': '1121',
-    # 'Cohort LTV KPIs': '333',
-    # 'Ad Monetization': '400',
+    'Executive KPIs': '1121',
+    'Cohort LTV KPIs': '333',
+    'Ad Monetization': '400',
     # 'All Games': '399',
     # 'Blast Explorers': '889',
     'Cooking Craze': '59',
-    # 'Evermerge': '870',
-    # 'Fairway': '1128',
+    'Evermerge': '870',
+    'Fairway': '1128',
     # 'Fashion Crafters': '763',
     'Gummy Drop!': '58',
     # 'Match Upon a Time': '1035',
-    # 'Puzzles and Passports': '1161',
+    'Puzzles and Passports': '1161',
     # 'Towers & Titans': '844',
     # 'Travel Crush': '1074',
-    # 'Ultimate Survivors': '1043'
+    'Ultimate Survivors': '1043'
 }
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time selection
@@ -95,7 +95,6 @@ result_txt_dict = {}  # Variable for Slack message
 # Population the README file
 new_content = f"# Last results at {now} UTC:\n"
 for folder in folders_dict:
-    print(folder + 'START')
     result_dict = {'good': [], 'bad': []}
     result_txt_dict[folder] = []
     new_content += f'\n### {folder}: \n'
@@ -106,7 +105,6 @@ for folder in folders_dict:
         for link in result_dict['bad']:
             new_content += f'- [{link}]({link[:-2]})\n'
             result_txt_dict[folder].append(link)
-    print(folder + 'END')
 with open(file_path_readme, 'w', encoding='utf-8') as file:
     file.write(new_content + '\n')
 
