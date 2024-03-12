@@ -51,7 +51,7 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
 
     subfolders = sdk.folder_children(folder_id)
     for folder in subfolders:
-        if 'archive' not in folder.name.lower():
+        if 'archive' not in folder.name.lower() or 'DEV' != folder.name.lower():
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
 
@@ -95,6 +95,7 @@ result_txt_dict = {}  # Variable for Slack message
 # Population the README file
 new_content = f"# Last results at {now} UTC:\n"
 for folder in folders_dict:
+    print(folder + 'START')
     result_dict = {'good': [], 'bad': []}
     result_txt_dict[folder] = []
     new_content += f'\n### {folder}: \n'
@@ -105,7 +106,7 @@ for folder in folders_dict:
         for link in result_dict['bad']:
             new_content += f'- [{link}]({link[:-2]})\n'
             result_txt_dict[folder].append(link)
-
+    print(folder + 'END')
 with open(file_path_readme, 'w', encoding='utf-8') as file:
     file.write(new_content + '\n')
 
