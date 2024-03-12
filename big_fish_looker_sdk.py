@@ -83,7 +83,7 @@ folders_dict = {
     'Puzzles and Passports': '1161',
     # 'Towers & Titans': '844',
     # 'Travel Crush': '1074',
-    # 'Ultimate Survivors': '1043'
+    'Ultimate Survivors': '1043'
 }
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time selection
