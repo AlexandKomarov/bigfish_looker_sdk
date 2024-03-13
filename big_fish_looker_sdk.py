@@ -1,30 +1,31 @@
 import looker_sdk
 from datetime import datetime
-
+from concurrent.futures import ThreadPoolExecutor, as_completed
 # Creating the looker SDK object to make a connection to Looker API
 sdk = looker_sdk.init40()
 
 
 # Function for checking the response from the database by keywords in single dashboard
-def single_dashboard_check(id: str, result_dict: dict):
+def single_dashboard_check(id: str):
+    # print('board - ' + id, end=' | ')
     try:
         board = sdk.dashboard(dashboard_id=id)
         error_words = ('error', 'Error', 'trouble', 'Trouble')
         for tile in board.dashboard_elements:
-            query = tile.query
-            if query and query.id:
-                query_response = sdk.run_query(query_id=query.id, result_format='json')
-                if any(word in query_response for word in error_words):
-                    result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌")
-                    break
-        else:
-            result_dict['good'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅")
+            if getattr(tile, 'query', None) is not None and getattr(tile.query, 'id', None) is not None:
+                query = tile.query
+                if query and query.id:
+                    query_response = sdk.run_query(query_id=query.id, result_format='json')
+                    if any(word in query_response for word in error_words):
+                        return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌"
+        return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅"
     except:
-        result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌")
+        return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌"
 
 
 # Function for checking the response from the database by keywords in single look
-def single_look_check(id, result_dict: dict):
+def single_look_check(id: str):
+    # print('look - ' + id, end=' | ')
     try:
         look = sdk.look(look_id=id)
         error_words = ('error', 'Error', 'trouble', 'Trouble')
@@ -32,11 +33,10 @@ def single_look_check(id, result_dict: dict):
         if query and query.id:
             query_response = sdk.run_query(query_id=query.id, result_format='json')
             if any(word in query_response for word in error_words):
-                result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ❌")
-            else:
-                result_dict['good'].append(f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ✅")
+                return f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ❌"
+        return f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ✅"
     except:
-        result_dict['bad'].append(f"https://bigfishgames.gw1.cloud.looker.com/look/{id} ❌")
+        return f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ❌"
 
 
 # Function to retrieve all dashboards and looks in a folder using recursion
@@ -60,11 +60,17 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
     dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
     get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
 
-    for id in dict_of_dashboards_and_looks['dashboards']:
-        single_dashboard_check(id, result_dict)
+    with ThreadPoolExecutor() as executor:
+        future_to_id = {executor.submit(single_dashboard_check, id): id for id in dict_of_dashboards_and_looks['dashboards']}
+        future_to_id.update({executor.submit(single_look_check, id): id for id in dict_of_dashboards_and_looks['looks']})
 
-    for id in dict_of_dashboards_and_looks['looks']:
-        single_look_check(id, result_dict)
+        for future in as_completed(future_to_id):
+            result = future.result()
+            if "❌" in result:
+                result_dict['bad'].append(result)
+            else:
+                result_dict['good'].append(result)
+    return result_dict
 
 
 # Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
@@ -72,18 +78,22 @@ folders_dict = {
     'Executive KPIs': '1121',
     'Cohort LTV KPIs': '333',
     'Ad Monetization': '400',
+    'Finance': '655',
     # 'All Games': '399',
-    # 'Blast Explorers': '889',
+    'Premium Games': '786',
+    'Blast Explorers': '889',
     'Cooking Craze': '59',
     'Evermerge': '870',
     'Fairway': '1128',
-    # 'Fashion Crafters': '763',
+    'Fashion Crafters': '763',
     'Gummy Drop!': '58',
-    # 'Match Upon a Time': '1035',
+    'Match Upon a Time': '1035',
     'Puzzles and Passports': '1161',
-    # 'Towers & Titans': '844',
-    # 'Travel Crush': '1074',
-    'Ultimate Survivors': '1043'
+    'Towers & Titans': '844',
+    'Travel Crush': '1074',
+    'Ultimate Survivors': '1043',
+    'Manta Ray': '688'
+
 }
 
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time selection
@@ -95,6 +105,7 @@ result_txt_dict = {}  # Variable for Slack message
 # Population the README file
 new_content = f"# Last results at {now} UTC:\n"
 for folder in folders_dict:
+    # print('\n' + folder)
     result_dict = {'good': [], 'bad': []}
     result_txt_dict[folder] = []
     new_content += f'\n### {folder}: \n'
