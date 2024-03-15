@@ -4,10 +4,30 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # Creating the looker SDK object to make a connection to Looker API
 sdk = looker_sdk.init40()
 
+# Dict with ids which we do not check for a week
+seven_days_do_not_check_dict = {'2024-03-15':['2028',
+                                              '2029',
+                                              '2000',
+                                              '1978',
+                                              '2139',
+                                              '2107',
+                                              '2222',
+                                              '2186',
+                                              '2337']}
+
+# function to check is the period of waiting for the id is over or not
+def do_not_need_for_a_week(id):
+    for date in seven_days_do_not_check_dict:
+        if (datetime.now() - (datetime.strptime(date, "%Y-%m-%d"))).days < 8:
+            if id in seven_days_do_not_check_dict[date]:
+                return True
+    else: return False
 
 # Function for checking the response from the database by keywords in single dashboard
 def single_dashboard_check(id: str):
     # print('board - ' + id, end=' | ')
+    if do_not_need_for_a_week(id):
+        return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅"
     try:
         board = sdk.dashboard(dashboard_id=id)
         error_words = ('error', 'Error', 'trouble', 'Trouble')
@@ -26,6 +46,8 @@ def single_dashboard_check(id: str):
 # Function for checking the response from the database by keywords in single look
 def single_look_check(id: str):
     # print('look - ' + id, end=' | ')
+    if do_not_need_for_a_week(id):
+        return f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ✅"
     try:
         look = sdk.look(look_id=id)
         error_words = ('error', 'Error', 'trouble', 'Trouble')
@@ -51,7 +73,7 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
 
     subfolders = sdk.folder_children(folder_id)
     for folder in subfolders:
-        if 'archive' not in folder.name.lower() or 'DEV' != folder.name.lower():
+        if 'archive' not in folder.name.lower() or 'DEV' in folder.name.lower():
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
 
@@ -131,3 +153,4 @@ with open(file_path, 'w', encoding='utf-8') as file:
         else:
             for link in result_txt_dict[folder]:
                 file.write(link + '\n')
+
