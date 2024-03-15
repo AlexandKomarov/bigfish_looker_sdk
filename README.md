@@ -1,8 +1,8 @@
-# Last results at 2024-03-14 15:39:09 UTC:
+# Last results at 2024-03-15 15:09:09 UTC:
 
 ### Executive KPIs: 
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2029 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2029)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/2028 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2028)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2029 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2029)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/2000 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2000)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1978 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1978)
 
@@ -14,16 +14,17 @@
 
 ### Finance: 
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/2042 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2042)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2043 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2043)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1896)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1927)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1914 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1914)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2043 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2043)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2044)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1898 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1898)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1906 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1906)
 
 ### Premium Games: 
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1361 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1361)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1371 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1371)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2222 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2222)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2337 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2337)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2186 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2186)
@@ -42,31 +43,33 @@
 
 ### Evermerge: 
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1289 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1289)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1300 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1300)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1797 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1797)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1702 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1702)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1300 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1300)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1745 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1745)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1297 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1297)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1460 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1460)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/375 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/375)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1297 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1297)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2136 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2136)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1301 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1301)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1461 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1461)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1797 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1797)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2136 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2136)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1788 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1788)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1807 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1807)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1653 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1653)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1908 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1908)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1299 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1299)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1973 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1973)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1464 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1464)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1299 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1299)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1908 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1908)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1317 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1317)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1464 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1464)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1479 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1479)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2021 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2021)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2296 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2296)
+- [https://bigfishgames.gw1.cloud.looker.com/looks/2298 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2298)
+- [https://bigfishgames.gw1.cloud.looker.com/looks/2365 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2365)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2009 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2009)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2010 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2010)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/366 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/366)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/1778 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/1778)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/366 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/366)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/2312 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/2312)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/1777 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/1777)
 
@@ -75,9 +78,9 @@
 
 ### Fashion Crafters: 
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1309 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1309)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1306 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1306)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1310 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1310)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1307 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1307)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1310 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1310)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1306 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1306)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1308 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1308)
 
 ### Gummy Drop!: 
@@ -92,8 +95,8 @@
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/2283 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2283)
 
 ### Towers & Titans: 
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2067 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2067)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/2068 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2068)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/2067 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/2067)
 
 ### Travel Crush: 
 - All is GOOD!
@@ -109,8 +112,8 @@
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1101 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1101)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1294 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1294)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1095 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1095)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1295 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1295)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1353 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1353)
+- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1295 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1295)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1486 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1486)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/1714 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/1714)
 - [https://bigfishgames.gw1.cloud.looker.com/looks/1715 ❌](https://bigfishgames.gw1.cloud.looker.com/looks/1715)
@@ -121,6 +124,4 @@
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1602 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1602)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1547 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1547)
 - [https://bigfishgames.gw1.cloud.looker.com/dashboards/1494 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1494)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1496 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1496)
-- [https://bigfishgames.gw1.cloud.looker.com/dashboards/1549 ❌](https://bigfishgames.gw1.cloud.looker.com/dashboards/1549)
 
