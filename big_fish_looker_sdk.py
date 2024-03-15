@@ -73,7 +73,7 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
 
     subfolders = sdk.folder_children(folder_id)
     for folder in subfolders:
-        if 'archive' not in folder.name.lower() or 'DEV' in folder.name.lower():
+        if 'archive' not in folder.name.lower() or 'DEV' != folder.name:
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
 
