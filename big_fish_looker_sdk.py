@@ -73,7 +73,7 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
 
     subfolders = sdk.folder_children(folder_id)
     for folder in subfolders:
-        if 'archive' not in folder.name.lower() or 'DEV' != folder.name:
+        if 'archive' not in folder.name.lower() or 'DEV' in folder.name:
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
 
@@ -97,24 +97,24 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
 
 # Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
 folders_dict = {
-    'Executive KPIs': '1121',
-    'Cohort LTV KPIs': '333',
-    'Ad Monetization': '400',
-    'Finance': '655',
+    # 'Executive KPIs': '1121',
+    # 'Cohort LTV KPIs': '333',
+    # 'Ad Monetization': '400',
+    # 'Finance': '655',
     # 'All Games': '399',
-    'Premium Games': '786',
-    'Blast Explorers': '889',
-    'Cooking Craze': '59',
-    'Evermerge': '870',
-    'Fairway': '1128',
-    'Fashion Crafters': '763',
-    'Gummy Drop!': '58',
-    'Match Upon a Time': '1035',
+    # 'Premium Games': '786',
+    # 'Blast Explorers': '889',
+    # 'Cooking Craze': '59',
+    # 'Evermerge': '870',
+    # 'Fairway': '1128',
+    # 'Fashion Crafters': '763',
+    # 'Gummy Drop!': '58',
+    # 'Match Upon a Time': '1035',
     'Puzzles and Passports': '1161',
-    'Towers & Titans': '844',
-    'Travel Crush': '1074',
-    'Ultimate Survivors': '1043',
-    'Manta Ray': '688'
+    # 'Towers & Titans': '844',
+    # 'Travel Crush': '1074',
+    # 'Ultimate Survivors': '1043',
+    # 'Manta Ray': '688'
 
 }
 
