@@ -13,7 +13,10 @@ seven_days_do_not_check_dict = {'2024-03-15':['2028',
                                               '2107',
                                               '2222',
                                               '2186',
-                                              '2337']}
+                                              '2337'],
+                                '2024-03-18':['1371',
+                                              '1361',
+                                              '1906']}
 
 # function to check is the period of waiting for the id is over or not
 def do_not_need_for_a_week(id):
@@ -25,7 +28,7 @@ def do_not_need_for_a_week(id):
 
 # Function for checking the response from the database by keywords in single dashboard
 def single_dashboard_check(id: str):
-    # print('board - ' + id, end=' | ')
+    print('board - ' + id, end=' | ')
     if do_not_need_for_a_week(id):
         return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅"
     try:
@@ -45,7 +48,7 @@ def single_dashboard_check(id: str):
 
 # Function for checking the response from the database by keywords in single look
 def single_look_check(id: str):
-    # print('look - ' + id, end=' | ')
+    print('look - ' + id, end=' | ')
     if do_not_need_for_a_week(id):
         return f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ✅"
     try:
@@ -73,7 +76,7 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
 
     subfolders = sdk.folder_children(folder_id)
     for folder in subfolders:
-        if 'archive' not in folder.name.lower() or 'DEV' in folder.name:
+        if 'archive' not in folder.name.lower() and 'DEV' not in folder.name:
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
 
@@ -82,7 +85,7 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
     dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
     get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
 
-    with ThreadPoolExecutor() as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         future_to_id = {executor.submit(single_dashboard_check, id): id for id in dict_of_dashboards_and_looks['dashboards']}
         future_to_id.update({executor.submit(single_look_check, id): id for id in dict_of_dashboards_and_looks['looks']})
 
@@ -97,24 +100,24 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
 
 # Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
 folders_dict = {
-    # 'Executive KPIs': '1121',
-    # 'Cohort LTV KPIs': '333',
-    # 'Ad Monetization': '400',
-    # 'Finance': '655',
-    # 'All Games': '399',
-    # 'Premium Games': '786',
+    'Executive KPIs': '1121',
+    'Cohort LTV KPIs': '333',
+    'Ad Monetization': '400',
+    'Finance': '655',
+    # # 'All Games': '399',
+    'Premium Games': '786',
     # 'Blast Explorers': '889',
-    # 'Cooking Craze': '59',
-    # 'Evermerge': '870',
-    # 'Fairway': '1128',
+    'Cooking Craze': '59',
+    'Evermerge': '870',
+    'Fairway': '1128',
     # 'Fashion Crafters': '763',
-    # 'Gummy Drop!': '58',
-    # 'Match Upon a Time': '1035',
+    'Gummy Drop!': '58',
+    'Match Upon a Time': '1035',
     'Puzzles and Passports': '1161',
-    # 'Towers & Titans': '844',
-    # 'Travel Crush': '1074',
-    # 'Ultimate Survivors': '1043',
-    # 'Manta Ray': '688'
+    'Towers & Titans': '844',
+    'Travel Crush': '1074',
+    'Ultimate Survivors': '1043',
+    'Manta Ray': '688'
 
 }
 
@@ -127,7 +130,7 @@ result_txt_dict = {}  # Variable for Slack message
 # Population the README file
 new_content = f"# Last results at {now} UTC:\n"
 for folder in folders_dict:
-    # print('\n' + folder)
+    print('\n' + folder)
     result_dict = {'good': [], 'bad': []}
     result_txt_dict[folder] = []
     new_content += f'\n### {folder}: \n'
@@ -154,3 +157,4 @@ with open(file_path, 'w', encoding='utf-8') as file:
             for link in result_txt_dict[folder]:
                 file.write(link + '\n')
 
+# print(single_dashboard_check('1837'))
