@@ -16,7 +16,8 @@ seven_days_do_not_check_dict = {'2024-03-15':['2028',
                                               '2337'],
                                 '2024-03-18':['1371',
                                               '1361',
-                                              '1906']}
+                                              '1906',
+                                              '2315']}
 
 # function to check is the period of waiting for the id is over or not
 def do_not_need_for_a_week(id):
