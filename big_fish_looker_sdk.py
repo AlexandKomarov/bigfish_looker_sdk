@@ -1,23 +1,28 @@
 import looker_sdk
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
 # Creating the looker SDK object to make a connection to Looker API
 sdk = looker_sdk.init40()
 
 # Dict with ids which we do not check for a week
-seven_days_do_not_check_dict = {'2024-03-15':['2028',
-                                              '2029',
-                                              '2000',
-                                              '1978',
-                                              '2139',
-                                              '2107',
-                                              '2222',
-                                              '2186',
-                                              '2337'],
-                                '2024-03-18':['1371',
-                                              '1361',
-                                              '1906',
-                                              '2315']}
+seven_days_do_not_check_dict = {'2024-03-15': ['2028',
+                                               '2029',
+                                               '2000',
+                                               '1978',
+                                               '2139',
+                                               '2107',
+                                               '2222',
+                                               '2186',
+                                               '2337'],
+                                '2024-03-18': ['1371',
+                                               '1361',
+                                               '1906',
+                                               '2315'],
+                                '2024-03-19': ['1898',
+                                               '2051',
+                                               '170']}
+
 
 # function to check is the period of waiting for the id is over or not
 def do_not_need_for_a_week(id):
@@ -25,7 +30,9 @@ def do_not_need_for_a_week(id):
         if (datetime.now() - (datetime.strptime(date, "%Y-%m-%d"))).days < 8:
             if id in seven_days_do_not_check_dict[date]:
                 return True
-    else: return False
+    else:
+        return False
+
 
 # Function for checking the response from the database by keywords in single dashboard
 def single_dashboard_check(id: str):
@@ -39,7 +46,7 @@ def single_dashboard_check(id: str):
             if getattr(tile, 'query', None) is not None and getattr(tile.query, 'id', None) is not None:
                 query = tile.query
                 if query and query.id:
-                    query_response = sdk.run_query(query_id=query.id, result_format='json')
+                    query_response = sdk.run_query(query_id=query.id, result_format='json', limit=3)
                     if any(word in query_response for word in error_words):
                         return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌"
         return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅"
@@ -86,9 +93,11 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
     dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
     get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
 
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        future_to_id = {executor.submit(single_dashboard_check, id): id for id in dict_of_dashboards_and_looks['dashboards']}
-        future_to_id.update({executor.submit(single_look_check, id): id for id in dict_of_dashboards_and_looks['looks']})
+    with ThreadPoolExecutor() as executor:
+        future_to_id = {executor.submit(single_dashboard_check, id): id for id in
+                        dict_of_dashboards_and_looks['dashboards']}
+        future_to_id.update(
+            {executor.submit(single_look_check, id): id for id in dict_of_dashboards_and_looks['looks']})
 
         for future in as_completed(future_to_id):
             result = future.result()
@@ -130,9 +139,9 @@ result_txt_dict = {}  # Variable for Slack message
 
 # Population the README file
 new_content = f"# Last results at {now} UTC:\n"
+result_dict = {'good': [], 'bad': []}
 for folder in folders_dict:
     print('\n' + folder)
-    result_dict = {'good': [], 'bad': []}
     result_txt_dict[folder] = []
     new_content += f'\n### {folder}: \n'
     check_all_dashboards_and_looks_in_folder(folders_dict[folder], result_dict)
@@ -142,6 +151,23 @@ for folder in folders_dict:
         for link in result_dict['bad']:
             new_content += f'- [{link}]({link[:-2]})\n'
             result_txt_dict[folder].append(link)
+
+# Second dashboard single check
+for folder in result_txt_dict:
+    if result_txt_dict[folder]:
+        print(folder)
+        new_link_list = []
+        for view in result_txt_dict[folder]:
+            if 'dashboards' in view:
+                new_link_dash = single_dashboard_check(view[53:-2])
+                if "❌" not in new_link_dash:
+                    new_link_list.append(new_link_dash)
+            elif 'looks' in view:
+                new_link_look = single_look_check(view[48:-2])
+                if "❌" not in new_link_look:
+                    new_link_list.append(new_link_look)
+        result_txt_dict[folder] = new_link_list
+
 with open(file_path_readme, 'w', encoding='utf-8') as file:
     file.write(new_content + '\n')
 
@@ -157,5 +183,3 @@ with open(file_path, 'w', encoding='utf-8') as file:
         else:
             for link in result_txt_dict[folder]:
                 file.write(link + '\n')
-
-# print(single_dashboard_check('1837'))
