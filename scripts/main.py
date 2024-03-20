@@ -101,7 +101,7 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_xtx_name, folder_
             result_txt_list.append(result)
 
     for look in dict_of_dashboards_and_looks['looks']:
-        result = single_dashboard_check(look)
+        result = single_look_check(look)
         if "❌" in result:
             result_txt_list.append(result)
 
