@@ -45,7 +45,7 @@ def single_dashboard_check(id: str):
             if getattr(tile, 'query', None) is not None and getattr(tile.query, 'id', None) is not None:
                 query = tile.query
                 if query and query.id:
-                    query_response = sdk.run_query(query_id=query.id, result_format='json', limit=3)
+                    query_response = sdk.run_query(query_id=query.id, result_format='json')
                     if any(word in query_response for word in error_words):
                         return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ❌"
         return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅"
