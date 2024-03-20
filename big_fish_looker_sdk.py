@@ -20,8 +20,7 @@ seven_days_do_not_check_dict = {'2024-03-15': ['2028',
                                                '1906',
                                                '2315'],
                                 '2024-03-19': ['1898',
-                                               '2051',
-                                               '170']}
+                                               '2051']}
 
 
 # function to check is the period of waiting for the id is over or not
@@ -160,11 +159,11 @@ for folder in result_txt_dict:
         for view in result_txt_dict[folder]:
             if 'dashboards' in view:
                 new_link_dash = single_dashboard_check(view[53:-2])
-                if "❌" not in new_link_dash:
+                if "❌" in new_link_dash:
                     new_link_list.append(new_link_dash)
             elif 'looks' in view:
                 new_link_look = single_look_check(view[48:-2])
-                if "❌" not in new_link_look:
+                if "❌" in new_link_look:
                     new_link_list.append(new_link_look)
         result_txt_dict[folder] = new_link_list
 
