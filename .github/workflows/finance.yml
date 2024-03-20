@@ -1,0 +1,50 @@
+name: Run Looker Script for Finance
+on:
+  schedule:
+    - cron: '45 13 * * *'  # Daily run at 13:45 UTC
+  workflow_dispatch:
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install looker_sdk
+
+      - name: Run script and save results in Markdown and txt
+        run: python scripts/finance.py
+        env:
+          LOOKERSDK_BASE_URL: ${{ secrets.BASE_URL }}
+          LOOKERSDK_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          LOOKERSDK_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.email "Alex.Komarov-ext@bigfishgames.com"
+          git config --global user.name "GitHub Actions"
+          git add results/finance_result.txt
+          git commit -m "Update results" -a || echo "No changes to commit"
+          git pull --rebase 
+          git push --force-with-lease origin HEAD:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read finance_result.txt content
+        id: readme_content
+        run: echo "::set-output name=content::$(cat results/finance_result.txt | sed 's/$/\\n/g' | tr -d '\n')"
+
+      - name: Notify Slack with finance_result.txt content
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
+        run: |
+          README_CONTENT="${{ steps.readme_content.outputs.content }}"
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL

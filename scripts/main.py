@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Creating the looker SDK object to make a connection to Looker API
 sdk = looker_sdk.init40()
-
+start_time = datetime.now()
 # Dict with ids which we do not check for a week
 seven_days_do_not_check_dict = {'2024-03-15': ['2028',
                                                '2029',
@@ -35,7 +35,7 @@ def do_not_need_for_a_week(id):
 
 # Function for checking the response from the database by keywords in single dashboard
 def single_dashboard_check(id: str):
-    print('board - ' + id, end=' | ')
+    # print('board - ' + id, end=' | ')
     if do_not_need_for_a_week(id):
         return f"https://bigfishgames.gw1.cloud.looker.com/dashboards/{id} ✅"
     try:
@@ -55,7 +55,7 @@ def single_dashboard_check(id: str):
 
 # Function for checking the response from the database by keywords in single look
 def single_look_check(id: str):
-    print('look - ' + id, end=' | ')
+    # print('look - ' + id, end=' | ')
     if do_not_need_for_a_week(id):
         return f"https://bigfishgames.gw1.cloud.looker.com/looks/{id} ✅"
     try:
@@ -87,98 +87,62 @@ def get_dashboards_in_folder(folder_id, dict_of_ids):
             get_dashboards_in_folder(folder.id, dict_of_ids)
 
 
+result_txt_list = []  # Variable for Slack message
+
+
 # Function for enumerating all dashboards and looks in a folder and checking them out
-def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
+def check_all_dashboards_and_looks_in_folder(folder_id, result_xtx_name, folder_name):
     dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
     get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
-        future_to_id = {executor.submit(single_dashboard_check, id): id for id in
-                        dict_of_dashboards_and_looks['dashboards']}
-        future_to_id.update(
-            {executor.submit(single_look_check, id): id for id in dict_of_dashboards_and_looks['looks']})
+    for board in dict_of_dashboards_and_looks['dashboards']:
+        result = single_dashboard_check(board)
+        if "❌" in result:
+            result_txt_list.append(result)
 
-        for future in as_completed(future_to_id):
-            result = future.result()
-            if "❌" in result:
-                result_dict['bad'].append(result)
-            else:
-                result_dict['good'].append(result)
-    return result_dict
+    for look in dict_of_dashboards_and_looks['looks']:
+        result = single_dashboard_check(look)
+        if "❌" in result:
+            result_txt_list.append(result)
 
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time selection
+    end_time = datetime.now()
+    duration = end_time - start_time
+    hours, remainder = divmod(duration.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    file_path = f'../results/{result_xtx_name}.txt'
 
-# Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
-folders_dict = {
-    'Executive KPIs': '1121',
-    'Cohort LTV KPIs': '333',
-    'Ad Monetization': '400',
-    'Finance': '655',
-    # # 'All Games': '399',
-    'Premium Games': '786',
-    # 'Blast Explorers': '889',
-    'Cooking Craze': '59',
-    'Evermerge': '870',
-    'Fairway': '1128',
-    # 'Fashion Crafters': '763',
-    'Gummy Drop!': '58',
-    'Match Upon a Time': '1035',
-    'Puzzles and Passports': '1161',
-    'Towers & Titans': '844',
-    'Travel Crush': '1074',
-    'Ultimate Survivors': '1043',
-    'Manta Ray': '688'
-
-}
-
-now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time selection
-
-file_path_readme = 'README.md'  # Path to README file
-
-result_txt_dict = {}  # Variable for Slack message
-
-# Population the README file
-new_content = f"# Last results at {now} UTC:\n"
-result_dict = {'good': [], 'bad': []}
-for folder in folders_dict:
-    print('\n' + folder)
-    result_txt_dict[folder] = []
-    new_content += f'\n### {folder}: \n'
-    check_all_dashboards_and_looks_in_folder(folders_dict[folder], result_dict)
-    if not result_dict['bad']:
-        new_content += '- All is GOOD!\n'
-    else:
-        for link in result_dict['bad']:
-            new_content += f'- [{link}]({link[:-2]})\n'
-            result_txt_dict[folder].append(link)
-
-# Second dashboard single check
-# for folder in result_txt_dict:
-#     if result_txt_dict[folder]:
-#         print(folder)
-#         new_link_list = []
-#         for view in result_txt_dict[folder]:
-#             if 'dashboards' in view:
-#                 new_link_dash = single_dashboard_check(view[53:-2])
-#                 if "❌" in new_link_dash:
-#                     new_link_list.append(new_link_dash)
-#             elif 'looks' in view:
-#                 new_link_look = single_look_check(view[48:-2])
-#                 if "❌" in new_link_look:
-#                     new_link_list.append(new_link_look)
-#         result_txt_dict[folder] = new_link_list
-
-with open(file_path_readme, 'w', encoding='utf-8') as file:
-    file.write(new_content + '\n')
-
-file_path = 'result.txt'
-
-# Population the result.txt file to send it into Slack
-with open(file_path, 'w', encoding='utf-8') as file:
-    file.write(f"# Results at {now}:\n\n")
-    for folder in result_txt_dict:
-        file.write('- ' + folder + '\n')
-        if not result_txt_dict[folder]:
+    # Population the executive_kpi_result.txt file to send it into Slack
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(f"# Results at {now}:\n\n")
+        file.write('- ' + f'{folder_name}' + '\n')
+        if not result_txt_list:
             file.write('All is GOOD!\n')
         else:
-            for link in result_txt_dict[folder]:
+            for link in result_txt_list:
                 file.write(link + '\n')
+
+        file.write(f"\nTime spent on task: {hours} hours and {minutes} minutes.\n")
+
+# Dict with folders that need to be checked (un-comment on existing ones or add new ones by analogy)
+# folders_dict = {
+#     'Executive KPIs': '1121',
+#     'Cohort LTV KPIs': '333',
+#     'Ad Monetization': '400',
+#     'Finance': '655',
+#     'All Games': '399',
+#     'Premium Games': '786',
+#     'Blast Explorers': '889',
+#     'Cooking Craze': '59',
+#     'Evermerge': '870',
+#     'Fairway': '1128',
+#     'Fashion Crafters': '763',
+#     'Gummy Drop!': '58',
+#     'Match Upon a Time': '1035',
+#     'Puzzles and Passports': '1161',
+#     'Towers & Titans': '844',
+#     'Travel Crush': '1074',
+#     'Ultimate Survivors': '1043',
+#     'Manta Ray': '688'
+#
+# }
