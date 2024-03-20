@@ -110,7 +110,7 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_xtx_name, folder_
     duration = end_time - start_time
     hours, remainder = divmod(duration.seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-    file_path = f'../results/{result_xtx_name}.txt'
+    file_path = f'results/{result_xtx_name}.txt'
 
     # Population the executive_kpi_result.txt file to send it into Slack
     with open(file_path, 'w', encoding='utf-8') as file:
