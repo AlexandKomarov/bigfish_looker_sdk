@@ -1,9 +1,6 @@
-# Results at 2024-03-20 21:00:28:
+# Results at 2024-03-20 20:58:43:
 
 - Executive KPIs
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1995 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1996 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1997 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/2031 ❌
+All is GOOD!
 
-Time spent on task: 0 hours and 13 minutes.
+Time spent on task: 0 hours and 2 minutes.
