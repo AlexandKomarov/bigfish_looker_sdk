@@ -1,0 +1,89 @@
+# Results at 2024-03-19 21:57:32:
+
+- Executive KPIs
+All is GOOD!
+- Cohort LTV KPIs
+All is GOOD!
+- Ad Monetization
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+- Finance
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Premium Games
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Cooking Craze
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Evermerge
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Fairway
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Gummy Drop!
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Match Upon a Time
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Puzzles and Passports
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Towers & Titans
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2178 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2257 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2258 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Travel Crush
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2178 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2257 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2258 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+- Ultimate Survivors
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2178 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2257 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2258 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1896 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1979 ✅
+- Manta Ray
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2178 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2257 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1854 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2258 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1927 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2044 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1888 ✅
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1979 ✅
