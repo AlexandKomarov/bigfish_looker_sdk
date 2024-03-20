@@ -47,4 +47,4 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow Cooking Craze. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL

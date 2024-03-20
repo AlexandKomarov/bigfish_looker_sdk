@@ -1,7 +1,7 @@
-name: Run Looker Script for Fairway
+name: Run Looker Script for Ultimate Survivors
 on:
   schedule:
-    - cron: '15 14 * * *'  # Daily run at 14:15 UTC
+    - cron: '30 15 * * *'  # Daily run at 15:30 UTC
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           pip install looker_sdk
 
       - name: Run script and save results in txt
-        run: python scripts/fairway.py
+        run: python scripts/ultimate_survivors.py
         env:
           LOOKERSDK_BASE_URL: ${{ secrets.BASE_URL }}
           LOOKERSDK_CLIENT_ID: ${{ secrets.CLIENT_ID }}
@@ -31,20 +31,20 @@ jobs:
         run: |
           git config --global user.email "Alex.Komarov-ext@bigfishgames.com"
           git config --global user.name "GitHub Actions"
-          git add results/fairway_result.txt
+          git add results/ultimate_survivors_result.txt
           git commit -m "Update results" -a || echo "No changes to commit"
           git pull --rebase 
           git push --force-with-lease origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read fairway_result.txt content
+      - name: Read ultimate_survivors_result.txt content
         id: readme_content
-        run: echo "::set-output name=content::$(cat results/fairway_result.txt | sed 's/$/\\n/g' | tr -d '\n')"
+        run: echo "::set-output name=content::$(cat results/ultimate_survivors_result.txt | sed 's/$/\\n/g' | tr -d '\n')"
 
-      - name: Notify Slack with fairway_result.txt content
+      - name: Notify Slack with ultimate_survivors_result.txt content
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow is Fairway. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow Ultimate Survivors. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL

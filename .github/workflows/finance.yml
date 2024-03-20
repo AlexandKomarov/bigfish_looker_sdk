@@ -20,7 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install looker_sdk
 
-      - name: Run script and save results in Markdown and txt
+      - name: Run script and save results in txt
         run: python scripts/finance.py
         env:
           LOOKERSDK_BASE_URL: ${{ secrets.BASE_URL }}
@@ -47,4 +47,4 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow Finance. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL

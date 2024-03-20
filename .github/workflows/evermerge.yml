@@ -1,7 +1,7 @@
 name: Run Looker Script for Evermerge
 on:
   schedule:
-    - cron: '0 13 * * *'  # Daily run at 13:00 UTC
+    - cron: '45 15 * * *'  # Daily run at 15:45 UTC
   workflow_dispatch:
 
 jobs:
@@ -47,4 +47,4 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow is complete. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow Evermerge. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
