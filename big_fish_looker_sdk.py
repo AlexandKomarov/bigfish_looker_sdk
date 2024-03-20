@@ -92,7 +92,7 @@ def check_all_dashboards_and_looks_in_folder(folder_id, result_dict):
     dict_of_dashboards_and_looks = {'dashboards': [], 'looks': []}
     get_dashboards_in_folder(folder_id, dict_of_dashboards_and_looks)
 
-    with ThreadPoolExecutor() as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         future_to_id = {executor.submit(single_dashboard_check, id): id for id in
                         dict_of_dashboards_and_looks['dashboards']}
         future_to_id.update(
@@ -152,20 +152,20 @@ for folder in folders_dict:
             result_txt_dict[folder].append(link)
 
 # Second dashboard single check
-for folder in result_txt_dict:
-    if result_txt_dict[folder]:
-        print(folder)
-        new_link_list = []
-        for view in result_txt_dict[folder]:
-            if 'dashboards' in view:
-                new_link_dash = single_dashboard_check(view[53:-2])
-                if "❌" in new_link_dash:
-                    new_link_list.append(new_link_dash)
-            elif 'looks' in view:
-                new_link_look = single_look_check(view[48:-2])
-                if "❌" in new_link_look:
-                    new_link_list.append(new_link_look)
-        result_txt_dict[folder] = new_link_list
+# for folder in result_txt_dict:
+#     if result_txt_dict[folder]:
+#         print(folder)
+#         new_link_list = []
+#         for view in result_txt_dict[folder]:
+#             if 'dashboards' in view:
+#                 new_link_dash = single_dashboard_check(view[53:-2])
+#                 if "❌" in new_link_dash:
+#                     new_link_list.append(new_link_dash)
+#             elif 'looks' in view:
+#                 new_link_look = single_look_check(view[48:-2])
+#                 if "❌" in new_link_look:
+#                     new_link_list.append(new_link_look)
+#         result_txt_dict[folder] = new_link_list
 
 with open(file_path_readme, 'w', encoding='utf-8') as file:
     file.write(new_content + '\n')
