@@ -1,7 +1,7 @@
 name: Run Looker Script for Cohort LTV KPIs
 on:
   schedule:
-    - cron: '30 13 * * *'  # Daily run at 13:30 UTC
+    - cron: '20 13 * * *'  # Daily run at 13:20 UTC
   workflow_dispatch:
 
 jobs:

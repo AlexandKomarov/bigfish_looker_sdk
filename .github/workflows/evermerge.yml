@@ -1,7 +1,7 @@
 name: Run Looker Script for Evermerge
 on:
   schedule:
-    - cron: '15 17 * * *'  # Daily run at 17:15 UTC
+    - cron: '0 17 * * *'  # Daily run at 17:00 UTC
   workflow_dispatch:
 
 jobs:

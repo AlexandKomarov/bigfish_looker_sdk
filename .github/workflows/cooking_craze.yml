@@ -1,7 +1,7 @@
 name: Run Looker Script for Cooking Craze
 on:
   schedule:
-    - cron: '45 13 * * *'  # Daily run at 13:45 UTC
+    - cron: '30 13 * * *'  # Daily run at 13:30 UTC
   workflow_dispatch:
 
 jobs:
