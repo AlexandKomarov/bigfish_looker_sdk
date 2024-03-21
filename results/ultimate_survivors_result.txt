@@ -1,0 +1,10 @@
+# Results at 2024-03-21 11:41:29:
+
+- Ultimate Survivors
+https://bigfishgames.gw1.cloud.looker.com/dashboards/1990 ❌
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2047 ❌
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2048 ❌
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2049 ❌
+https://bigfishgames.gw1.cloud.looker.com/dashboards/2116 ❌
+
+Time spent on task: 0 hours and 36 minutes.
