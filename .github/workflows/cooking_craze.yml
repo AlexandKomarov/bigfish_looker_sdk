@@ -44,7 +44,7 @@ jobs:
 
       - name: Notify Slack with cooking_craze_result.txt content
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALEX }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_LOOKER_SDK_REVIEW }}
         run: |
           README_CONTENT="${{ steps.readme_content.outputs.content }}"
           curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Workflow Cooking Craze. Check the results:\\n$README_CONTENT\"}" $SLACK_WEBHOOK_URL
