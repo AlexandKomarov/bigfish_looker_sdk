@@ -1,10 +1,6 @@
-# Results at 2024-03-24 16:31:38:
+# Results at 2024-03-25 17:17:08:
 
 - Ultimate Survivors
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1990 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/2047 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/2048 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/2049 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/2116 ❌
+All is GOOD!
 
-Time spent on task: 0 hours and 42 minutes.
+Time spent on task: 1 hours and 28 minutes.
