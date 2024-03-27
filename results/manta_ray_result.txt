@@ -1,9 +1,6 @@
-# Results at 2024-03-26 15:42:39:
+# Results at 2024-03-27 15:32:09:
 
 - Manta Ray
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1494 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1547 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1602 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1095 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1101 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1294 ❌
@@ -17,4 +14,4 @@ https://bigfishgames.gw1.cloud.looker.com/looks/1835 ❌
 https://bigfishgames.gw1.cloud.looker.com/looks/1899 ❌
 https://bigfishgames.gw1.cloud.looker.com/looks/1936 ❌
 
-Time spent on task: 0 hours and 14 minutes.
+Time spent on task: 0 hours and 3 minutes.
