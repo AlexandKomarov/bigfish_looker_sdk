@@ -1,4 +1,4 @@
-# Results at 2024-03-26 18:28:12:
+# Results at 2024-03-27 18:27:00:
 
 - Evermerge
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1289 ❌
@@ -11,7 +11,6 @@ https://bigfishgames.gw1.cloud.looker.com/dashboards/2136 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/375 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1653 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1788 ❌
-https://bigfishgames.gw1.cloud.looker.com/dashboards/1938 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1807 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1908 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1464 ❌
@@ -20,7 +19,9 @@ https://bigfishgames.gw1.cloud.looker.com/dashboards/1299 ❌
 https://bigfishgames.gw1.cloud.looker.com/dashboards/1317 ❌
 https://bigfishgames.gw1.cloud.looker.com/looks/2021 ❌
 https://bigfishgames.gw1.cloud.looker.com/looks/2296 ❌
+https://bigfishgames.gw1.cloud.looker.com/looks/1778 ❌
+https://bigfishgames.gw1.cloud.looker.com/looks/2312 ❌
 https://bigfishgames.gw1.cloud.looker.com/looks/2009 ❌
 https://bigfishgames.gw1.cloud.looker.com/looks/2010 ❌
 
-Time spent on task: 1 hours and 19 minutes.
+Time spent on task: 1 hours and 18 minutes.
